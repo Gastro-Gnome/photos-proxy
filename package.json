@@ -1,0 +1,27 @@
+{
+  "name": "photos-proxy",
+  "version": "1.0.0",
+  "description": "Proxy Server Fec",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appetizer-aperitif/photos-proxy.git"
+  },
+  "author": "Zach Thomas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/appetizer-aperitif/photos-proxy/issues"
+  },
+  "homepage": "https://github.com/appetizer-aperitif/photos-proxy#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-http-proxy": "^1.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}

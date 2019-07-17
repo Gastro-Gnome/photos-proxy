@@ -1,0 +1,18 @@
+.page{
+  display: flex;
+  justify-content: center;
+}
+.content-wrapper{
+  width: 960px;
+}
+.map-n-photos{
+  display: flex;
+  flex-direction: row;
+}
+.below-map{
+  display: flex;
+  flex-direction: row;
+}
+.column{
+  height: 910px;
+}
