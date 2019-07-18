@@ -5,9 +5,22 @@
 .content-wrapper{
   width: 960px;
 }
-.map-n-photos{
-  display: flex;
-  flex-direction: row;
+.upper{
+  height: 535px;
+  width: 100%;
+}
+#header{
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#photos{
+  width: 660px;
+  z-index: 2;
+  position: absolute;
+  right: 0;
+  bottom: 336px;
 }
 .below-map{
   display: flex;
@@ -15,4 +28,7 @@
 }
 .column{
   height: 910px;
+}
+img{
+  z-index: -10;
 }
