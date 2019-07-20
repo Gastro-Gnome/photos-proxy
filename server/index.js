@@ -4,40 +4,42 @@ const path = require('path');
 const app = express();
 const port =  3000;
 
-app.use(express.static(path.join(__dirname, '../public')))
-app.use('/photos', proxy('http://52.90.9.19', {
+app.use('/:businessId', express.static(path.join(__dirname, '../public')));
+
+app.use('/:businessId/photos', proxy('http://localhost:3001', {
   proxyReqPathResolver: (req) => {
-    console.log(req.url);
+    console.log('original url', req.url);
+    console.log('businessId', req.params.businessId)
     let url = req.url;
     if (url !== '/main.js'){
-      url = '/photos' + req.url;
+      url = '/photos';
     }
-    console.log(url);
-    return url;
+    console.log('end url', `/${req.params.businessId}${url}`);
+    return `/${req.params.businessId}${url}`;
   }
 }));
-app.use('/header', proxy('http://18.191.38.179/', {
-  proxyReqPathResolver: (req) => {
-    console.log(req.url);
-    let url = req.url;
-    if (url !== '/bundle.js'){
-      url = '/header' + req.url;
-    }
-    console.log(url);
-    return url;
-  }
-}));
-app.use('/reviews', proxy('http://13.52.99.182:1337',{
-  proxyReqPathResolver: (req) => {
-    console.log(req.url);
-    let url = req.url;
-    if (url !== '/dist/bundle.js'){
-      url = '/reviews' + req.url;
-    }
-    console.log(url);
-    return url;
-  }
-}));
+// app.use('/header', proxy('http://18.191.38.179/', {
+//   proxyReqPathResolver: (req) => {
+//     console.log(req.url);
+//     let url = req.url;
+//     if (url !== '/bundle.js'){
+//       url = '/header' + req.url;
+//     }
+//     console.log(url);
+//     return url;
+//   }
+// }));
+// app.use('/reviews', proxy('http://13.52.99.182:1337',{
+//   proxyReqPathResolver: (req) => {
+//     console.log(req.url);
+//     let url = req.url;
+//     if (url !== '/dist/bundle.js'){
+//       url = '/reviews' + req.url;
+//     }
+//     console.log(url);
+//     return url;
+//   }
+// }));
 // app.use('/', proxy('http://localhost:3004'));
 
 app.get('/', (req, res) => {
