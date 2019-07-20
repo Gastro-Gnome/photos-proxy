@@ -6,15 +6,12 @@ const port =  3000;
 
 app.use('/:businessId', express.static(path.join(__dirname, '../public')));
 
-app.use('/:businessId/photos', proxy('http://localhost:3001', {
+app.use('/:businessId/photos', proxy('http://52.90.9.19', {
   proxyReqPathResolver: (req) => {
-    console.log('original url', req.url);
-    console.log('businessId', req.params.businessId)
     let url = req.url;
     if (url !== '/main.js'){
       url = '/photos';
     }
-    console.log('end url', `/${req.params.businessId}${url}`);
     return `/${req.params.businessId}${url}`;
   }
 }));
